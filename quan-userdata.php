@@ -19,6 +19,6 @@
             });
         });
     } else {
-        include 'PostMeta.class.php';
+        include 'UserData.class.php';
         new \Quan\UserData();
     }
