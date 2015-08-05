@@ -1,12 +1,14 @@
 <?php
 
-/**
- * Plugin Name: Quan User Data
- * Plugin URI: http://www.quandigital.com/
- * Description: Adds custom user data without the need for the backend (with the help of acf)
- * Version: beta
- * License: MIT
- */
+    namespace Quan\UserData;
+
+    /**
+     * Plugin Name: Quan User Data
+     * Plugin URI: http://www.quandigital.com/
+     * Description: Adds custom user data without the need for the backend (with the help of acf)
+     * Version: beta
+     * License: MIT
+     */
 
 
     defined( 'ABSPATH' ) or die();
@@ -19,6 +21,19 @@
             });
         });
     } else {
-        include 'UserData.class.php';
-        new \Quan\UserData();
+        \spl_autoload_register(function($class) {
+            $class = ltrim($class, '\\');
+
+            if(strpos($class, __NAMESPACE__) !== 0) {
+                return;
+            }
+
+            $class = str_replace(__NAMESPACE__, '', $class);
+            $path = __DIR__ . str_replace('\\', DIRECTORY_SEPARATOR, $class) . '.class.php';
+
+            require_once($path);
+        });
+
+        $profile = new \Quan\UserData\ProfilePage();
+        \register_activation_hook( __FILE__, [$profile, 'addRewriteRule'] );
     }
