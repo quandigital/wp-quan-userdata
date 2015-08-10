@@ -1,5 +1,6 @@
 {
-    "name": "quandigital/quan-userdata",
+    "name": "quandigital/userdata",
+    "description": "Adds a user profile and provides the data",
     "type": "wordpress-plugin",
     "require": {
         "composer/installers": "~1.0"
