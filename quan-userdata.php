@@ -6,7 +6,7 @@
      * Plugin Name: Quan User Data
      * Plugin URI: http://www.quandigital.com/
      * Description: Adds custom user data without the need for the backend (with the help of acf)
-     * Version: beta
+     * Version: 1.0.0
      * License: MIT
      */
 
