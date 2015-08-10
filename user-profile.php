@@ -27,24 +27,24 @@
                         <?= $data->bio; ?>
                     </div>    
                 <?php endif; ?>
-            </div>
 
-            <div class="socials">
-                <?php if (notEmpty($data->twitter)) : ?>
-                    <div class="social user-twitter">
-                        <a href="https://twitter.com/<?= $data->twitter; ?>" target="_blank"><span class="ion-social-twitter"></span></a>
-                    </div>    
-                <?php endif; ?>
-                <?php if (notEmpty($data->linkedin)) : ?>
-                    <div class="social user-linkedin">
-                        <a href="<?= $data->linkedin; ?>"  target="_blank"><span class="ion-social-linkedin-outline"></span></a>
-                    </div>    
-                <?php endif; ?>
-                <?php if (notEmpty($data->xing)) : ?>
-                    <div class="social user-xing">
-                        <a href="<?= $data->xing; ?>" target="_blank">X</a>
-                    </div>    
-                <?php endif; ?>
+                <div class="socials">
+                    <?php if (notEmpty($data->twitter)) : ?>
+                        <div class="social user-twitter">
+                            <a href="https://twitter.com/<?= $data->twitter; ?>" target="_blank"><span class="ion-social-twitter"></span></a>
+                        </div>    
+                    <?php endif; ?>
+                    <?php if (notEmpty($data->linkedin)) : ?>
+                        <div class="social user-linkedin">
+                            <a href="<?= $data->linkedin; ?>"  target="_blank"><span class="ion-social-linkedin-outline"></span></a>
+                        </div>    
+                    <?php endif; ?>
+                    <?php if (notEmpty($data->xing)) : ?>
+                        <div class="social user-xing">
+                            <a href="<?= $data->xing; ?>" target="_blank">X</a>
+                        </div>    
+                    <?php endif; ?>
+                </div>
             </div>
         </div>
 
