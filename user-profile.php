@@ -1,9 +1,10 @@
 <?php
 
 use QuanDigital\WpLib\Helpers;
+use QuanDigital\UserData\UserData;
 
 $user = get_user_by( 'slug', get_query_var( 'author_name' ) );
-$data = new \Quan\UserData\UserData($user);
+$data = new UserData($user);
 $posts = get_posts([
     'author' => $user->ID,
     'posts_per_page' => -1,
