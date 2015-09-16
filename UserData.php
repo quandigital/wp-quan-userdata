@@ -1,6 +1,6 @@
 <?php
 
-namespace Quan\UserData;
+namespace QuanDigital\UserData;
 
 /**
  * Just a bunch of getters to correctly display user meta data
