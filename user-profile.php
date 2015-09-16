@@ -1,15 +1,15 @@
 <?php
-    
-    $user = get_user_by( 'slug', get_query_var( 'author_name' ) );
 
-    $data = new \Quan\UserData\UserData($user);
+use QuanDigital\WpLib\Helpers;
+use QuanDigital\UserData\UserData;
 
-    $posts = get_posts([
-        'author' => $user->ID,
-        'posts_per_page' => -1,
-        ]);
-
-    get_header();
+$user = get_user_by( 'slug', get_query_var( 'author_name' ) );
+$data = new UserData($user);
+$posts = get_posts([
+    'author' => $user->ID,
+    'posts_per_page' => -1,
+    ]);
+get_header();
 
 ?>
     <div class="user-profile">
@@ -29,17 +29,17 @@
                 <?php endif; ?>
 
                 <div class="socials">
-                    <?php if (notEmpty($data->twitter)) : ?>
+                    <?php if (Helpers::notEmpty($data->twitter)) : ?>
                         <div class="social user-twitter">
                             <a href="https://twitter.com/<?= $data->twitter; ?>" target="_blank"><span class="ion-social-twitter"></span></a>
                         </div>    
                     <?php endif; ?>
-                    <?php if (notEmpty($data->linkedin)) : ?>
+                    <?php if (Helpers::notEmpty($data->linkedin)) : ?>
                         <div class="social user-linkedin">
                             <a href="<?= $data->linkedin; ?>"  target="_blank"><span class="ion-social-linkedin-outline"></span></a>
                         </div>    
                     <?php endif; ?>
-                    <?php if (notEmpty($data->xing)) : ?>
+                    <?php if (Helpers::notEmpty($data->xing)) : ?>
                         <div class="social user-xing">
                             <a href="<?= $data->xing; ?>" target="_blank">X</a>
                         </div>    
