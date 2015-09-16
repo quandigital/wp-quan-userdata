@@ -1,6 +1,6 @@
 <?php
     
-namespace Quan\UserData;
+namespace QuanDigital\UserData;
 
 class ProfilePage
 {
@@ -16,6 +16,7 @@ class ProfilePage
             }
         });
 
+        \add_action('init', [$this, 'addRewriteRulesFilter']);
         \add_action('set_user_role', [$this, 'removeUserRewriteRule'], 10, 3);
         \add_action('user_register', [$this, 'addRewriteRules']);
     }
@@ -37,7 +38,7 @@ class ProfilePage
      */
     function addRewriteRules()
     {
-        $this->addRewriteRule();
+        $this->addRewriteRulesFilter();
         \flush_rewrite_rules();
     }
 
@@ -46,7 +47,7 @@ class ProfilePage
      * WP filter
      * @return array new rewrite rules
      */
-    function addRewriteRuleFilter()
+    function addRewriteRulesFilter()
     {
         add_filter('author_rewrite_rules', function ($author_rewrite_rules)
         {
@@ -55,7 +56,6 @@ class ProfilePage
             $editors = get_users(['role' => 'editor']);
             $authors = array_merge($authors, $editors);
             foreach ($authors as $author) {
-                qlog($author->data->user_nicename);
                 $author_rewrite_rules["({$author->data->user_nicename})/page/?([0-9]+)/?$"] = 'index.php?author_name=$matches[1]&paged=$matches[2]';
                 $author_rewrite_rules["({$author->data->user_nicename})/?$"] = 'index.php?author_name=$matches[1]';
             }  
@@ -73,7 +73,7 @@ class ProfilePage
     function removeUserRewriteRule($userId, $newRole, $oldRoles) 
     {   
         if (in_array($newRole, ['author', 'editor']) || !empty(array_intersect($oldRoles, ['author', 'editor']))) {
-            $this->addUserRewriteRule($userId);
+            $this->addUserRewriteRulesFilter($userId);
         }
     }
 
