@@ -1,0 +1,11 @@
+{
+    "name": "quandigital/userdata",
+    "description": "Adds a user profile and provides the data",
+    "license": "MIT",
+    "type": "wordpress-plugin",
+    "require": {
+        "php": ">=5.4",
+        "quandigital/wp-libs": "~1.0",
+        "composer/installers": "~1.0"
+    }
+}
