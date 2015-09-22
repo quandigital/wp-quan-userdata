@@ -8,7 +8,7 @@ namespace QuanDigital\UserData;
 class UserData
 {
     private $user;
-    public $image;
+    public $tweetImage;
     public $twitter;
     public $xing;
     public $linkedin;
@@ -26,6 +26,7 @@ class UserData
         $this->job = $this->getJob();
         $this->bio = $this->getBio();
         $this->profileLink = $this->getProfileLink();
+        $this->tweetImage = $this->getUserImage(160,160);
         $this->resolution = isset($_COOKIE['resolution']) ? explode(',', $_COOKIE['resolution']) : [1920, 1];
     }
 
