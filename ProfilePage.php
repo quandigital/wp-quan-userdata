@@ -73,7 +73,7 @@ class ProfilePage
     function removeUserRewriteRule($userId, $newRole, $oldRoles) 
     {   
         if (in_array($newRole, ['author', 'editor']) || !empty(array_intersect($oldRoles, ['author', 'editor']))) {
-            $this->addUserRewriteRulesFilter($userId);
+            $this->addRewriteRulesFilter($userId);
         }
     }
 
