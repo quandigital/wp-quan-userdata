@@ -56,7 +56,7 @@ get_header();
                     <?php foreach ($posts as $post) : ?>
                         <article class="user-post">
                             <div class="post-image">
-                                <?= quanPostThumbs($post); ?>
+                                <?= quanPostThumbs($post->ID); ?>
                             </div>
 
                             <div class="index-post-text">
